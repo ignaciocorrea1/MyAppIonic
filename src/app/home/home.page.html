@@ -1,11 +1,11 @@
+<!-- Header -->
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Blank </ion-title>
   </ion-toolbar>
 </ion-header>
 
+<!-- Main -->
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -14,7 +14,29 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Login de acceso</ion-card-subtitle>
+        <ion-card-title>Credenciales</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>  
+        <ion-list>
+          <ion-item>
+            <ion-input [(ngModel)]="user.username" label="Usuario" labelPlacement="floating" placeholder="Ingrese usuario"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input [(ngModel)]="user.password" label="Contraseña" type="password" labelPlacement="floating" placeholder="Ingrese su contraseña"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-toggle justify="end">Recordar</ion-toggle><br /><br />
+          </ion-item>
+          
+          <ion-button (click)="validar()">Ingresar</ion-button>
+          <br>
+          <ion-button>Registrar</ion-button>
+        </ion-list>
+      </ion-card-content>
+
+    </ion-card>
   </div>
 </ion-content>
