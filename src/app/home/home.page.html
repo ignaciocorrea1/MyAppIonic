@@ -28,12 +28,12 @@
             <ion-input [(ngModel)]="user.password" label="Contraseña" type="password" labelPlacement="floating" placeholder="Ingrese su contraseña"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-toggle justify="end">Recordar</ion-toggle><br /><br />
+            <ion-toggle justify="end">Recuerdame</ion-toggle><br /><br />
           </ion-item>
           
           <ion-button (click)="validar()">Ingresar</ion-button>
           <br>
-          <ion-button>Registrar</ion-button>
+          <ion-button [routerLink]="['/register']">Registrar</ion-button>
         </ion-list>
       </ion-card-content>
 
