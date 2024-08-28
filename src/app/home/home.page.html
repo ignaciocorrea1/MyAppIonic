@@ -20,6 +20,7 @@
         <ion-card-title>Credenciales</ion-card-title>
       </ion-card-header>
       <ion-card-content>  
+        <div class="profileImage"><img src=".assets/img/logo.webp" alt=""></div>
         <ion-list>
           <ion-item>
             <ion-input [(ngModel)]="user.username" label="Usuario" labelPlacement="floating" placeholder="Ingrese usuario"></ion-input>
@@ -30,6 +31,13 @@
           <ion-item>
             <ion-toggle justify="end">Recuerdame</ion-toggle><br /><br />
           </ion-item>
+
+          <div id="carga" *ngIf="spinner">
+            <ion-item>Cargando</ion-item>
+            <ion-item>
+              <mat-spinner> </mat-spinner>
+            </ion-item>
+          </div>
           
           <ion-button (click)="validar()">Ingresar</ion-button>
           <br>

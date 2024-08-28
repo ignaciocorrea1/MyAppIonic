@@ -25,3 +25,20 @@
 #container a {
   text-decoration: none;
 }
+
+#container #carga ion-item {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#container .profileImage img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
