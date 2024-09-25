@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { authGuard } from './Servicios/auth.guard';
 
 const routes: Routes = [
   {
@@ -18,10 +19,17 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./access/register/register.module').then( m => m.RegisterPageModule)
-  },  {
-    path: 'perfil',
-    loadChildren: () => import('./access/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./access/perfil/perfil.module').then( m => m.PerfilPageModule),
+    canActivate: [authGuard],
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./error/error.module').then( m => m.ErrorPageModule)
+  },
+
 
 
 ];

@@ -2,6 +2,7 @@ import { keyframes } from '@angular/animations';
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AnimationController } from '@ionic/angular';
+import { AuthenticatorService } from '../Servicios/authenticator.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { AnimationController } from '@ionic/angular';
 })
 export class HomePage {
 
-  constructor(private router: Router, private animationController:AnimationController) {}
+  constructor(private router: Router, private animationController:AnimationController, private auth:AuthenticatorService) {}
   spinner = false;
   user = {
     "username": "",
@@ -43,34 +44,29 @@ export class HomePage {
   };
 
   validar(){
-    if(this.user.username.length != 0) {
-      if(this.user.password.length != 0){
-        // Funciona
-        console.log("Usuario: "+this.user.username+"\nPassword: "+this.user.password)
-        let navigationExtras: NavigationExtras = {
-          state: {
-            username: this.user.username,
-            password: this.user.password,
-          },
-        };
+    if(this.auth.login(this.user.username, this.user.password)) {
+      // Funciona
+      console.log("Usuario: "+this.user.username+"\nPassword: "+this.user.password)
+      let navigationExtras: NavigationExtras = {
+        state: {
+          username: this.user.username,
+          password: this.user.password,
+        },
+      };
 
-        // Aparece el spinner
+      // Aparece el spinner
+      this.cambiarSpinner();
+      setTimeout(() => {
+
+        // Se redirecciona a la pagina de perfil
+        this.router.navigate(['/perfil'], navigationExtras);
         this.cambiarSpinner();
-        setTimeout(() => {
-
-          // Se redirecciona a la pagina de perfil
-          this.router.navigate(['/perfil'], navigationExtras);
-          this.cambiarSpinner();
-          
-        }, 3000);
-
-      }else{
-        // Contraseña vacia
-        console.log("Contraseña vacia")
-      }
+        
+      }, 1000);
+      
     }else{
-      // Usuario vacio
-        console.log("Usuario vacio")
+      // Credenciales malas
+        console.log("Credenciales no validas")
     }
   }
 }
