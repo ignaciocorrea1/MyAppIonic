@@ -44,7 +44,7 @@ export class HomePage {
   };
 
   validar(){
-    if(this.auth.login(this.user.username, this.user.password)) {
+    if(this.auth.loginBDD(this.user.username, this.user.password)) {
       // Funciona
       console.log("Usuario: "+this.user.username+"\nPassword: "+this.user.password)
       let navigationExtras: NavigationExtras = {
