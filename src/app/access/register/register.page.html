@@ -10,4 +10,50 @@
       <ion-title size="large">register</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div id="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Panel de registro</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-input
+              [(ngModel)]="user.username"
+              label="Usuario"
+              labelPlacement="floating"
+              placeholder="Ingrese usuario"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              [(ngModel)]="user.email"
+              label="Correo"
+              labelPlacement="floating"
+              placeholder="Ingrese correo"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              [(ngModel)]="user.password"
+              label="Contraseña"
+              labelPlacement="floating"
+              placeholder="Ingrese contraseña"
+              type="password"
+            ></ion-input>
+
+            <ion-button (click)="registrar()" fill="clear" shape="round">
+              Registrar
+            </ion-button> 
+            <br>
+            <ion-button [routerLink]="['/home']"  fill="clear" shape="round">
+              Volver
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
