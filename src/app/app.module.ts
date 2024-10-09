@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    provideAnimationsAsync(),
+    provideAnimationsAsync(), provideHttpClient(),
   ],
   bootstrap: [AppComponent],
 })

@@ -26,9 +26,14 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'mantenedor',
+    loadChildren: () => import('./Admin/mantenedor/mantenedor.module').then( m => m.MantenedorPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./error/error.module').then( m => m.ErrorPageModule)
   },
+
 
 
 
